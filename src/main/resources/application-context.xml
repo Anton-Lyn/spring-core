@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+    http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="storage" class="com.epam.training.storage.impl.StorageImpl"/>
+
+    <bean id="userRepository" class="com.epam.training.repository.impl.UserRepositoryImpl">
+        <constructor-arg name="storage" ref="storage"/>
+    </bean>
+
+    <bean id="userService" class="com.epam.training.service.impl.UserServiceImpl">
+        <constructor-arg name="userRepository" ref="userRepository"/>
+    </bean>
+
+    <bean id="eventService" class="com.epam.training.service.impl.EventServiceImpl"/>
+    <bean id="ticketService" class="com.epam.training.service.impl.TicketServiceImpl"/>
+
+    <bean id="bookingFacade" class="com.epam.training.facade.impl.BookingFacadeImpl">
+        <constructor-arg name="userService" ref="userService"/>
+        <constructor-arg name="eventService" ref="eventService"/>
+        <constructor-arg name="ticketService" ref="ticketService"/>
+    </bean>
+
+</beans>
