@@ -27,7 +27,7 @@ public class BookingFacadeImpl implements BookingFacade {
     }
 
     @Override
-    public Event getEventById(long eventId) {
+    public Event getEventById(Integer eventId) {
         return null;
     }
 
@@ -52,7 +52,7 @@ public class BookingFacadeImpl implements BookingFacade {
     }
 
     @Override
-    public boolean deleteEvent(long eventId) {
+    public boolean deleteEvent(Integer eventId) {
         return false;
     }
 
@@ -87,7 +87,7 @@ public class BookingFacadeImpl implements BookingFacade {
     }
 
     @Override
-    public Ticket bookTicket(long userId, long eventId, int place, Category category) {
+    public Ticket bookTicket(Integer userId, long eventId, int place, Category category) {
         return null;
     }
 
@@ -102,7 +102,7 @@ public class BookingFacadeImpl implements BookingFacade {
     }
 
     @Override
-    public boolean cancelTicket(long ticketId) {
+    public boolean cancelTicket(Integer ticketId) {
         return false;
     }
 }

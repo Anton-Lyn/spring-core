@@ -8,6 +8,6 @@ public class Api {
     public static void main(String[] args) {
         ApplicationContext context = new ClassPathXmlApplicationContext("application-context.xml");
         BookingFacadeImpl bookingFacade = context.getBean("bookingFacade", BookingFacadeImpl.class);
-
+        System.out.println(bookingFacade);
     }
 }

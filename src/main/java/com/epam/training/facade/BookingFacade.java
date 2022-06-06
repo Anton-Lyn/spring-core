@@ -18,7 +18,7 @@ public interface BookingFacade {
      * Gets event by its id.
      * @return Event.
      */
-    Event getEventById(long eventId);
+    Event getEventById(Integer eventId);
 
     /**
      * Get list of events by matching title. Title is matched using 'contains' approach.
@@ -59,7 +59,7 @@ public interface BookingFacade {
      * @param eventId Event id.
      * @return Flag that shows whether event has been deleted.
      */
-    boolean deleteEvent(long eventId);
+    boolean deleteEvent(Integer eventId);
 
     /**
      * Gets user by its id.
@@ -113,7 +113,7 @@ public interface BookingFacade {
      * @return Booked ticket object.
      * @throws java.lang.IllegalStateException if this place has already been booked.
      */
-    Ticket bookTicket(long userId, long eventId, int place, Category category);
+    Ticket bookTicket(Integer userId, long eventId, int place, Category category);
 
     /**
      * Get all booked tickets for specified user. Tickets should be sorted by event date in descending order.
@@ -138,6 +138,6 @@ public interface BookingFacade {
      * @param ticketId Ticket id.
      * @return Flag whether anything has been canceled.
      */
-    boolean cancelTicket(long ticketId);
+    boolean cancelTicket(Integer ticketId);
 
 }
