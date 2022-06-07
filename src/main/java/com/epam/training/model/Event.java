@@ -5,9 +5,9 @@ import java.util.Date;
 public class Event {
 
     private Integer id;
+
     private String title;
     private Date date;
-
     public Event(Integer id, String title, Date date) {
         this.id = id;
         this.title = title;
@@ -39,5 +39,14 @@ public class Event {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", date=" + date +
+                '}';
     }
 }

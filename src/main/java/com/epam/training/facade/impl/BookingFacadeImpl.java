@@ -28,32 +28,32 @@ public class BookingFacadeImpl implements BookingFacade {
 
     @Override
     public Event getEventById(Integer eventId) {
-        return null;
+        return eventService.getEventById(eventId);
     }
 
     @Override
     public List<Event> getEventsByTitle(String title, int pageSize, int pageNum) {
-        return null;
+        return eventService.getEventsByTitle(title, pageSize, pageNum);
     }
 
     @Override
     public List<Event> getEventsForDay(Date day, int pageSize, int pageNum) {
-        return null;
+        return eventService.getEventsForDay(day,pageSize, pageNum);
     }
 
     @Override
     public Event createEvent(Event event) {
-        return null;
+        return eventService.createEvent(event);
     }
 
     @Override
     public Event updateEvent(Event event) {
-        return null;
+        return eventService.updateEvent(event);
     }
 
     @Override
     public boolean deleteEvent(Integer eventId) {
-        return false;
+        return eventService.deleteEvent(eventId);
     }
 
     @Override
@@ -87,22 +87,22 @@ public class BookingFacadeImpl implements BookingFacade {
     }
 
     @Override
-    public Ticket bookTicket(Integer userId, long eventId, int place, Category category) {
-        return null;
+    public Ticket bookTicket(Integer userId, Integer eventId, int place, Category category) {
+        return ticketService.bookTicket(userId, eventId, place, category);
     }
 
     @Override
     public List<Ticket> getBookedTickets(User user, int pageSize, int pageNum) {
-        return null;
+        return ticketService.getBookedTickets(user, pageSize, pageNum);
     }
 
     @Override
     public List<Ticket> getBookedTickets(Event event, int pageSize, int pageNum) {
-        return null;
+        return ticketService.getBookedTickets(event, pageSize, pageNum);
     }
 
     @Override
     public boolean cancelTicket(Integer ticketId) {
-        return false;
+        return ticketService.cancelTicket(ticketId);
     }
 }

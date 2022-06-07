@@ -11,6 +11,7 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class StorageImpl implements Storage {
 
@@ -67,10 +68,17 @@ public class StorageImpl implements Storage {
     }
 
     @Override
-    public Ticket bookTicket(Integer userId, Integer eventId, int place, Category category) {
-        for (Ticket ticket : ticketStorage.values()) {
+    public Ticket bookTicket(Integer userId,
+                             Integer eventId,
+                             int place,
+                             Category category) {
+        List<Ticket> tickets = ticketStorage.values()
+                .stream()
+                .filter(ticket -> ticket.getEventId().equals(eventId))
+                .collect(Collectors.toList());
+        for (Ticket ticket : tickets) {
             if (ticket.getPlace() == place) {
-                checkPlaceAvailability(eventId, ticket);
+                checkBooking(ticket);
                 ticket.setUserId(userId);
                 ticket.setCategory(category);
                 return ticketStorage.put(ticket.getId(), ticket);
@@ -161,20 +169,9 @@ public class StorageImpl implements Storage {
         return eventStorage.values().removeIf(event -> event.getId().equals(eventId));
     }
 
-    private void checkPlaceAvailability(Integer eventId, Ticket ticket) {
-        checkEvent(eventId, ticket);
-        checkBooking(ticket);
-    }
-
     private void checkBooking(Ticket ticket) {
         if (ticket.getUserId() != null) {
             throw new RuntimeException("Place already booked!");
-        }
-    }
-
-    private void checkEvent(Integer eventId, Ticket ticket) {
-        if (!eventStorage.containsKey(eventId)) {
-            throw new RuntimeException("Wrong doesn't exist!");
         }
     }
 

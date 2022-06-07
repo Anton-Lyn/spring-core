@@ -57,4 +57,15 @@ public class Ticket {
     public void setPlace(Integer place) {
         this.place = place;
     }
+
+    @Override
+    public String toString() {
+        return "Ticket{" +
+                "id=" + id +
+                ", eventId=" + eventId +
+                ", userId=" + userId +
+                ", category=" + category +
+                ", place=" + place +
+                '}';
+    }
 }
