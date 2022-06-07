@@ -10,29 +10,27 @@
 
     <context:annotation-config/>
 
+    <context:property-placeholder location="application.properties"/>
+
+    <bean class="com.epam.training.utils.FileParser"/>
+
     <bean class="com.epam.training.postprocessor.InitialDataFromFileInitializingBeanPostProcessor"/>
 
     <bean id="storage" class="com.epam.training.storage.impl.StorageImpl"/>
 
     <bean id="userRepository" class="com.epam.training.repository.impl.UserRepositoryImpl">
-        <constructor-arg name="storage" ref="storage"/>
+        <property name="storage" ref="storage"/>
     </bean>
     <bean id="ticketRepository" class="com.epam.training.repository.impl.TicketRepositoryImpl">
-        <constructor-arg name="storage" ref="storage"/>
+        <property name="storage" ref="storage"/>
     </bean>
     <bean id="eventRepository" class="com.epam.training.repository.impl.EventRepositoryImpl">
-        <constructor-arg name="storage" ref="storage"/>
+        <property name="storage" ref="storage"/>
     </bean>
 
-    <bean id="userService" class="com.epam.training.service.impl.UserServiceImpl">
-        <constructor-arg name="userRepository" ref="userRepository"/>
-    </bean>
-    <bean id="ticketService" class="com.epam.training.service.impl.TicketServiceImpl">
-        <constructor-arg name="ticketRepository" ref="ticketRepository"/>
-    </bean>
-    <bean id="eventService" class="com.epam.training.service.impl.EventServiceImpl">
-        <constructor-arg name="eventRepository" ref="eventRepository"/>
-    </bean>
+    <bean id="userService" class="com.epam.training.service.impl.UserServiceImpl"/>
+    <bean id="ticketService" class="com.epam.training.service.impl.TicketServiceImpl"/>
+    <bean id="eventService" class="com.epam.training.service.impl.EventServiceImpl"/>
 
     <bean id="bookingFacade" class="com.epam.training.facade.impl.BookingFacadeImpl">
         <constructor-arg name="userService" ref="userService"/>

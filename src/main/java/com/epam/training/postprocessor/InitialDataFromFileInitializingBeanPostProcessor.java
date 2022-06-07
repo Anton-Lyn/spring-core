@@ -2,6 +2,7 @@ package com.epam.training.postprocessor;
 
 import com.epam.training.utils.FileParser;
 import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
 import org.springframework.util.ReflectionUtils;
 
@@ -11,6 +12,9 @@ import java.text.ParseException;
 
 public class InitialDataFromFileInitializingBeanPostProcessor implements BeanPostProcessor {
 
+    @Autowired
+    private FileParser fileParser;
+
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         if (beanName.equals("storage")) {
@@ -19,21 +23,21 @@ public class InitialDataFromFileInitializingBeanPostProcessor implements BeanPos
                 field.setAccessible(true);
                 if (field.getName().equals("userStorage")) {
                     try {
-                        ReflectionUtils.setField(field, bean, FileParser.parseUsers());
+                        ReflectionUtils.setField(field, bean, fileParser.parseUsers());
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
                 if (field.getName().equals("ticketStorage")) {
                     try {
-                        ReflectionUtils.setField(field, bean, FileParser.parseTickets());
+                        ReflectionUtils.setField(field, bean, fileParser.parseTickets());
                     } catch (FileNotFoundException e) {
                         e.printStackTrace();
                     }
                 }
                 if (field.getName().equals("eventStorage")) {
                     try {
-                        ReflectionUtils.setField(field, bean, FileParser.parseEvents());
+                        ReflectionUtils.setField(field, bean, fileParser.parseEvents());
                     } catch (FileNotFoundException | ParseException e) {
                         e.printStackTrace();
                     }

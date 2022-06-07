@@ -3,16 +3,14 @@ package com.epam.training.service.impl;
 import com.epam.training.model.User;
 import com.epam.training.repository.UserRepository;
 import com.epam.training.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class UserServiceImpl implements UserService {
 
-    private final UserRepository userRepository;
-
-    public UserServiceImpl(UserRepository userRepository) {
-        this.userRepository = userRepository;
-    }
+    @Autowired
+    private UserRepository userRepository;
 
     public User getUserById(Integer userId) {
         return userRepository.getUserById(userId);

@@ -6,16 +6,14 @@ import com.epam.training.model.Ticket;
 import com.epam.training.model.User;
 import com.epam.training.repository.TicketRepository;
 import com.epam.training.service.TicketService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 
 public class TicketServiceImpl implements TicketService {
 
-    private final TicketRepository ticketRepository;
-
-    public TicketServiceImpl(TicketRepository ticketRepository) {
-        this.ticketRepository = ticketRepository;
-    }
+    @Autowired
+    private TicketRepository ticketRepository;
 
     @Override
     public Ticket bookTicket(Integer userId, Integer eventId, int place, Category category) {

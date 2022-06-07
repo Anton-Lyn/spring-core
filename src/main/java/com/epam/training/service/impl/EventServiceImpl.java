@@ -3,17 +3,15 @@ package com.epam.training.service.impl;
 import com.epam.training.model.Event;
 import com.epam.training.repository.EventRepository;
 import com.epam.training.service.EventService;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.Date;
 import java.util.List;
 
 public class EventServiceImpl implements EventService {
 
-    private final EventRepository eventRepository;
-
-    public EventServiceImpl(EventRepository eventRepository) {
-        this.eventRepository = eventRepository;
-    }
+    @Autowired
+    private EventRepository eventRepository;
 
     @Override
     public Event getEventById(Integer eventId) {

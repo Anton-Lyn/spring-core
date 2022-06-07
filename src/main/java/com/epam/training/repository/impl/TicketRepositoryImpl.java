@@ -11,9 +11,9 @@ import java.util.List;
 
 public class TicketRepositoryImpl implements TicketRepository {
 
-    private final Storage storage;
+    private Storage storage;
 
-    public TicketRepositoryImpl(Storage storage) {
+    public void setStorage(Storage storage) {
         this.storage = storage;
     }
 

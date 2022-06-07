@@ -9,9 +9,9 @@ import java.util.List;
 
 public class EventRepositoryImpl implements EventRepository {
 
-    private final Storage storage;
+    private Storage storage;
 
-    public EventRepositoryImpl(Storage storage) {
+    public void setStorage(Storage storage) {
         this.storage = storage;
     }
 

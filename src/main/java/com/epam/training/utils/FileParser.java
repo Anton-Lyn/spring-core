@@ -3,15 +3,14 @@ package com.epam.training.utils;
 import com.epam.training.model.Event;
 import com.epam.training.model.Ticket;
 import com.epam.training.model.User;
+import org.springframework.beans.factory.annotation.Value;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -19,15 +18,14 @@ public class FileParser {
 
     private static final String REGEX = ";";
     private static final String DATE_FORMAT = "dd/MM/yyyy";
-    private static final String USERS_PATH = "src/main/resources/user-data.txt";
-    private static final String TICKETS_PATH = "src/main/resources/ticket-data.txt";
-    private static final String EVENTS_PATH = "src/main/resources/event-data.txt";
+    @Value("${users}")
+    private String USERS_PATH;
+    @Value("${tickets}")
+    private String TICKETS_PATH;
+    @Value("${events}")
+    private String EVENTS_PATH;
 
-    private FileParser() {
-        throw new UnsupportedOperationException();
-    }
-
-    public static Map<Integer, Event> parseEvents() throws FileNotFoundException,
+    public Map<Integer, Event> parseEvents() throws FileNotFoundException,
             ParseException {
         Map<Integer, Event> events = new HashMap<>();
         File file = new File(EVENTS_PATH);
@@ -46,7 +44,7 @@ public class FileParser {
         return events;
     }
 
-    public static Map<Integer, Ticket> parseTickets() throws FileNotFoundException {
+    public Map<Integer, Ticket> parseTickets() throws FileNotFoundException {
         Map<Integer, Ticket> tickets = new HashMap<>();
         File file = new File(TICKETS_PATH);
         try (Scanner scanner = new Scanner(file)) {
@@ -67,7 +65,7 @@ public class FileParser {
         return tickets;
     }
 
-    public static Map<Integer, User> parseUsers() throws FileNotFoundException {
+    public Map<Integer, User> parseUsers() throws FileNotFoundException {
         Map<Integer, User> users = new HashMap<>();
         File file = new File(USERS_PATH);
         try (Scanner scanner = new Scanner(file)) {

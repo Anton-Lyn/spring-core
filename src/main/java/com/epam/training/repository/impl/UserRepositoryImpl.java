@@ -8,9 +8,9 @@ import java.util.List;
 
 public class UserRepositoryImpl implements UserRepository {
 
-    private final Storage storage;
+    private Storage storage;
 
-    public UserRepositoryImpl(Storage storage) {
+    public void setStorage(Storage storage) {
         this.storage = storage;
     }
 
