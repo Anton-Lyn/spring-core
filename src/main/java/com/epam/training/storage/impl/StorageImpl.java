@@ -15,9 +15,9 @@ import java.util.stream.Collectors;
 
 public class StorageImpl implements Storage {
 
-    private final Map<Integer, User> userStorage;
-    private final Map<Integer, Ticket> ticketStorage;
-    private final Map<Integer, Event> eventStorage;
+    private Map<Integer, User> userStorage;
+    private Map<Integer, Ticket> ticketStorage;
+    private Map<Integer, Event> eventStorage;
 
     public StorageImpl() {
         this.userStorage = new HashMap<>();
@@ -54,12 +54,14 @@ public class StorageImpl implements Storage {
 
     @Override
     public User createUser(User user) {
-        return userStorage.put(user.getId(), user);
+        userStorage.put(user.getId(), user);
+        return user;
     }
 
     @Override
     public User updateUser(User user) {
-        return userStorage.put(user.getId(), user);
+        userStorage.put(user.getId(), user);
+        return user;
     }
 
     @Override
@@ -92,7 +94,7 @@ public class StorageImpl implements Storage {
     public List<Ticket> getBookedTickets(User user, int pageSize, int pageNum) {
         List<Ticket> tickets = new ArrayList<>();
         for (Ticket ticket : ticketStorage.values()) {
-            if (ticket.getUserId().equals(user.getId())) {
+            if (user.getId().equals(ticket.getUserId())) {
                 tickets.add(ticket);
             }
         }
@@ -156,12 +158,14 @@ public class StorageImpl implements Storage {
 
     @Override
     public Event createEvent(Event event) {
-        return eventStorage.put(event.getId(), event);
+        eventStorage.put(event.getId(), event);
+        return event;
     }
 
     @Override
     public Event updateEvent(Event event) {
-        return eventStorage.put(event.getId(), event);
+        eventStorage.put(event.getId(), event);
+        return event;
     }
 
     @Override
@@ -173,6 +177,19 @@ public class StorageImpl implements Storage {
         if (ticket.getUserId() != null) {
             throw new RuntimeException("Place already booked!");
         }
+    }
+
+    //for tests
+    public void setUserStorage(Map<Integer, User> userStorage) {
+        this.userStorage = userStorage;
+    }
+
+    public void setTicketStorage(Map<Integer, Ticket> ticketStorage) {
+        this.ticketStorage = ticketStorage;
+    }
+
+    public void setEventStorage(Map<Integer, Event> eventStorage) {
+        this.eventStorage = eventStorage;
     }
 
 }

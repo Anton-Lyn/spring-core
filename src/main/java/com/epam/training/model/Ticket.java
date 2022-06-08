@@ -1,5 +1,7 @@
 package com.epam.training.model;
 
+import java.util.Objects;
+
 public class Ticket {
 
     private Integer id;
@@ -67,5 +69,18 @@ public class Ticket {
                 ", category=" + category +
                 ", place=" + place +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Ticket ticket = (Ticket) o;
+        return Objects.equals(id, ticket.id) && Objects.equals(eventId, ticket.eventId) && Objects.equals(userId, ticket.userId) && category == ticket.category && Objects.equals(place, ticket.place);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, eventId, userId, category, place);
     }
 }

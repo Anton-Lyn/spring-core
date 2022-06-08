@@ -1,13 +1,14 @@
 package com.epam.training.model;
 
 import java.util.Date;
+import java.util.Objects;
 
 public class Event {
 
     private Integer id;
-
     private String title;
     private Date date;
+
     public Event(Integer id, String title, Date date) {
         this.id = id;
         this.title = title;
@@ -48,5 +49,18 @@ public class Event {
                 ", title='" + title + '\'' +
                 ", date=" + date +
                 '}';
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Event event = (Event) o;
+        return Objects.equals(id, event.id) && Objects.equals(title, event.title) && Objects.equals(date, event.date);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, title, date);
     }
 }
