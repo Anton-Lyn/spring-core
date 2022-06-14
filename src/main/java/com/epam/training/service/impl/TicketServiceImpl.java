@@ -7,9 +7,11 @@ import com.epam.training.model.User;
 import com.epam.training.repository.TicketRepository;
 import com.epam.training.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public class TicketServiceImpl implements TicketService {
 
     @Autowired

@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout}">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+<form action="#" th:action="@{/createUser}" th:object="${defaultUser}" method="post">
+
+    <div>
+        <input type="text" id="id" placeholder="Enter id" th:field="*{id}" required>
+    </div>
+    <div>
+        <input type="text" id="name" placeholder="Enter name" th:field="*{name}" required>
+    </div>
+    <div>
+        <input type="text" id="email" placeholder="Enter email" th:field="*{email}" required>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+</body>
+</html>

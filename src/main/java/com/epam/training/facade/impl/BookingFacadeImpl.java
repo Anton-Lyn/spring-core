@@ -8,23 +8,24 @@ import com.epam.training.model.User;
 import com.epam.training.service.EventService;
 import com.epam.training.service.TicketService;
 import com.epam.training.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
 
+@Component
 public class BookingFacadeImpl implements BookingFacade {
 
-    private final UserService userService;
-    private final EventService eventService;
-    private final TicketService ticketService;
+    @Autowired
+    private UserService userService;
 
-    public BookingFacadeImpl(UserService userService,
-                             EventService eventService,
-                             TicketService ticketService) {
-        this.userService = userService;
-        this.eventService = eventService;
-        this.ticketService = ticketService;
-    }
+    @Autowired
+    private EventService eventService;
+
+    @Autowired
+    private TicketService ticketService;
+
 
     @Override
     public Event getEventById(Integer eventId) {
@@ -38,7 +39,7 @@ public class BookingFacadeImpl implements BookingFacade {
 
     @Override
     public List<Event> getEventsForDay(Date day, int pageSize, int pageNum) {
-        return eventService.getEventsForDay(day,pageSize, pageNum);
+        return eventService.getEventsForDay(day, pageSize, pageNum);
     }
 
     @Override

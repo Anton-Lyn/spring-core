@@ -6,16 +6,16 @@ import com.epam.training.model.Ticket;
 import com.epam.training.model.User;
 import com.epam.training.repository.TicketRepository;
 import com.epam.training.storage.Storage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 
+@Component
 public class TicketRepositoryImpl implements TicketRepository {
 
+    @Autowired
     private Storage storage;
-
-    public void setStorage(Storage storage) {
-        this.storage = storage;
-    }
 
     @Override
     public Ticket bookTicket(Integer userId, Integer eventId, int place, Category category) {

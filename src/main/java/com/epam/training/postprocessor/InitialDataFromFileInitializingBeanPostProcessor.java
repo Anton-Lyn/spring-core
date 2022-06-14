@@ -4,12 +4,14 @@ import com.epam.training.utils.FileParser;
 import org.springframework.beans.BeansException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.BeanPostProcessor;
+import org.springframework.stereotype.Component;
 import org.springframework.util.ReflectionUtils;
 
 import java.io.FileNotFoundException;
 import java.lang.reflect.Field;
 import java.text.ParseException;
 
+@Component
 public class InitialDataFromFileInitializingBeanPostProcessor implements BeanPostProcessor {
 
     @Autowired
@@ -17,7 +19,7 @@ public class InitialDataFromFileInitializingBeanPostProcessor implements BeanPos
 
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
-        if (beanName.equals("storage")) {
+        if (beanName.equals("storageImpl")) {
             Field[] declaredFields = bean.getClass().getDeclaredFields();
             for (Field field : declaredFields) {
                 field.setAccessible(true);

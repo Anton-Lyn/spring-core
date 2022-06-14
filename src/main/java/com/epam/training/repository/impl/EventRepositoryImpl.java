@@ -3,17 +3,17 @@ package com.epam.training.repository.impl;
 import com.epam.training.model.Event;
 import com.epam.training.repository.EventRepository;
 import com.epam.training.storage.Storage;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.Date;
 import java.util.List;
 
+@Component
 public class EventRepositoryImpl implements EventRepository {
 
+    @Autowired
     private Storage storage;
-
-    public void setStorage(Storage storage) {
-        this.storage = storage;
-    }
 
     @Override
     public Event getEventById(Integer eventId) {

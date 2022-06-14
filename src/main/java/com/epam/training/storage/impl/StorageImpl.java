@@ -5,6 +5,7 @@ import com.epam.training.model.Event;
 import com.epam.training.model.Ticket;
 import com.epam.training.model.User;
 import com.epam.training.storage.Storage;
+import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,6 +14,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 
+@Component
 public class StorageImpl implements Storage {
 
     private Map<Integer, User> userStorage;

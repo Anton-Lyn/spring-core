@@ -1,0 +1,9 @@
+server:
+  port: 8080
+  error:
+    whitelabel:
+      enabled: false
+
+events: src/main/resources/event-data.txt
+tickets: src/main/resources/ticket-data.txt
+users: src/main/resources/user-data.txt

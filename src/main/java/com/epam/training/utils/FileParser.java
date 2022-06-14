@@ -4,6 +4,7 @@ import com.epam.training.model.Event;
 import com.epam.training.model.Ticket;
 import com.epam.training.model.User;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Component;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -14,6 +15,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
+@Component
 public class FileParser {
 
     private static final String REGEX = ";";
