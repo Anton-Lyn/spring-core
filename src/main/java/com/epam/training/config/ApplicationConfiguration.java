@@ -7,6 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Configuration
 public class ApplicationConfiguration {
+    //text2
 
     @Bean
     HandlerExceptionResolver errorHandler () {
